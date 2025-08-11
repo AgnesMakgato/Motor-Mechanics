@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Repair Estimate | Rasekodi Motors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/Rasekodi.jpg">
+                <h1>Rasekodi Motor Mechanics & Towing</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="estimate.html" class="active">Get Estimate</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="estimate-hero">
+        <div class="container">
+            <h2>Get an Instant Repair Estimate</h2>
+            <p>Upload photos of your vehicle damage and receive a preliminary estimate within hours</p>
+        </div>
+    </section>
+
+    <section class="estimate-form">
+        <div class="container">
+            <div class="form-container">
+                <form id="estimateForm">
+                    <div class="form-step active" id="step1">
+                        <h3>Vehicle Information</h3>
+                        <div class="form-group">
+                            <label for="make">Make:</label>
+                            <input type="text" id="make" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model:</label>
+                            <input type="text" id="model" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Year:</label>
+                            <input type="number" id="year" min="1990" max="2023" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mileage">Mileage (km):</label>
+                            <input type="number" id="mileage" required>
+                        </div>
+                        <button type="button" class="btn next-btn" onclick="nextStep(1, 2)">Next</button>
+                    </div>
+
+                    <div class="form-step" id="step2">
+                        <h3>Damage Details</h3>
+                        <div class="form-group">
+                            <label for="damageType">Type of Damage:</label>
+                            <select id="damageType" required>
+                                <option value="">Select damage type</option>
+                                <option value="collision">Collision</option>
+                                <option value="hail">Hail Damage</option>
+                                <option value="mechanical">Mechanical Failure</option>
+                                <option value="electrical">Electrical Issue</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="damageDesc">Damage Description:</label>
+                            <textarea id="damageDesc" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Is the vehicle drivable?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="drivable-yes" name="drivable" value="yes" required>
+                                <label for="drivable-yes">Yes</label>
+                                <input type="radio" id="drivable-no" name="drivable" value="no">
+                                <label for="drivable-no">No</label>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="btn back-btn" onclick="prevStep(2, 1)">Back</button>
+                            <button type="button" class="btn next-btn" onclick="nextStep(2, 3)">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step3">
+                        <h3>Upload Damage Photos</h3>
+                        <div class="form-group">
+                            <label>Upload clear photos of the damage from multiple angles (max 5 photos):</label>
+                            <div class="upload-area" id="uploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop photos here or click to browse</p>
+                                <input type="file" id="damagePhotos" accept="image/*" multiple style="display: none;">
+                            </div>
+                            <div class="preview-grid" id="previewGrid"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactName">Your Name:</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email:</label>
+                            <input type="email" id="contactEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone:</label>
+                            <input type="tel" id="contactPhone" required>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="btn back-btn" onclick="prevStep(3, 2)">Back</button>
+                            <button type="submit" class="btn submit-btn">Submit for Estimate</button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step4">
+                        <div class="success-message">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Estimate Request Received!</h3>
+                            <p>Thank you for submitting your repair request. Our team will review your photos and vehicle information and send you a preliminary estimate within 2-4 hours.</p>
+                            <p>For urgent requests, please call us at <strong>011 123 4567</strong>.</p>
+                            <a href="index.html" class="btn">Back to Home</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="estimate-info">
+                <h3>How It Works</h3>
+                <div class="info-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Provide Vehicle Details</h4>
+                        <p>Tell us about your vehicle and the type of damage.</p>
+                    </div>
+                </div>
+                <div class="info-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Upload Clear Photos</h4>
+                        <p>Show us the damage from multiple angles for accurate assessment.</p>
+                    </div>
+                </div>
+                <div class="info-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Receive Your Estimate</h4>
+                        <p>Get a preliminary estimate via email within hours.</p>
+                    </div>
+                </div>
+                <div class="estimate-benefits">
+                    <h4>Benefits of Our Online Estimate:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> No need to visit the workshop initially</li>
+                        <li><i class="fas fa-check"></i> Quick turnaround time</li>
+                        <li><i class="fas fa-check"></i> RMI approved assessment</li>
+                        <li><i class="fas fa-check"></i> No obligation to proceed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Rasekodi.jpg">
+                    <p>Quality repairs you can trust</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="estimate.html">Get Estimate</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Rasekodi Motor Mechanics & Towing. All Rights Reserved.</p>
+                <p>RMI Approved Workshop | VAT Registered</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
